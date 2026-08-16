@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-charcoal font-body antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-heading font-medium text-green tracking-tight;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  ::selection {
+    background-color: #C9A66B;
+    color: #1B4332;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid #C9A66B;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-content {
+    @apply mx-auto w-full max-w-content px-6 md:px-10;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-gold-dark;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply block h-[1px] w-6 bg-gold;
+  }
+
+  .masonry {
+    column-gap: 1.5rem;
+    column-count: 1;
+  }
+
+  @screen sm {
+    .masonry {
+      column-count: 2;
+    }
+  }
+
+  @screen lg {
+    .masonry {
+      column-count: 3;
+    }
+  }
+
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-card bg-green px-6 py-3 text-sm font-semibold text-cream shadow-card transition-all duration-200 hover:bg-green-dark hover:shadow-cardHover;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-card border border-charcoal/15 bg-transparent px-6 py-3 text-sm font-semibold text-charcoal transition-all duration-200 hover:border-gold hover:text-green;
+  }
+
+  .tag-pill {
+    @apply inline-flex items-center rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-green;
+  }
+}
