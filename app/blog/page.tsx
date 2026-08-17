@@ -9,12 +9,14 @@ export const metadata: Metadata = {
     "All posts on budgeting, saving, making money online, and side hustles from The Wealth Habit.",
 };
 
-export default function BlogPage({
+type SearchParams = Promise<{ category?: string }>;
+
+export default async function BlogPage({
   searchParams,
 }: {
-  searchParams: { category?: string };
+  searchParams: SearchParams;
 }) {
-  const activeCategory = searchParams.category;
+  const { category: activeCategory } = await searchParams;
   const filtered = activeCategory
     ? posts.filter((p) => p.category === activeCategory)
     : posts;
